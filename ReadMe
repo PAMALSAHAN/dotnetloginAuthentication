@@ -1,0 +1,16 @@
+dbcontext ekak haduma 
+    eka inhert kare identityDbContext eken
+        dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+    use karanna package eka ganna
+------------------------------------------------------------------------------------
+DI eka register kara config service eke.
+------------------------------------------------------------------------------------
+Connection stiring eka haduwa 
+    Db name eka wenas kara 
+--------------------------------------------------------------------------------------
+Application user ekak hadanawa identityuser inhert karala
+        dotnet add package Microsoft.AspNetCore.Identity
+    meka thamai use karana package eka. dbset eka gahala me class eken table ekak hadaganna
+-------------------------------------------------------------------------------------
+identity role ekak hadana eka thama karanne.ekata config ekata identity ekak add karana eka
+karanawa.
