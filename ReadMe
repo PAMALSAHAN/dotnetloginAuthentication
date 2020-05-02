@@ -14,3 +14,50 @@ Application user ekak hadanawa identityuser inhert karala
 -------------------------------------------------------------------------------------
 identity role ekak hadana eka thama karanne.ekata config ekata identity ekak add karana eka
 karanawa.
+        services.AddDefaultIdentity<ApplicationUser>()
+                .AddEntityFrameworkStores<AuthenticationContext>();
+    AddEntityFrameworkStores eka use karanne identity role eka implement karanna one hinda.
+------------------------------------------------------------------------------------------------
+dan karanne controller ekak hadala user sign in eke ewa pass karana eka 
+ekata wenawa controller ekak hadala 
+    Identity eken UserManager ekai SignInUserManagr ekai inject karanawa mokada eka service ekak 
+    widihata use karala tinne dependancy injection widihata. mekata constructor dependancy injection 
+    eka use karanawa.
+
+meke hadanawa async function ekak sign wena ewa ganna.ita issella ewa allaganna hadanna one 
+    model ekak eke nama ApplicationUserModel kiyala.eke apita one field tika implement karaganna puluwan.
+    [HttpPost]
+        [Route("Register")]
+        //http://localhost:5000/api/ApplicationUser/Register
+        
+        public async Task<Object> PostApplicationUser (ApplicationUserModel applicationUserModel)
+        {
+               var applicationUser=new ApplicationUser(){
+                UserName=applicationUserModel.UserName,
+                Email=applicationUserModel.Email,
+                FullName=applicationUserModel.FullName
+            };
+           
+            try
+            {
+                var result=await _userManager.CreateAsync(applicationUser,applicationUserModel.Password);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+        //applicationUserModel eka identity table ekata add karaganna one hinda applicationUer
+            //eken instance ekak hadala ekata applicationUserModel eke hadapuwa pass karanawa. 
+        //identiy user eken hadanne eke inherit wenawane Identity user wa eke fieild tinawa 
+                //ewata eliyen ganna apita one field tika hadaganna eka thama karanne.
+            //dan hadagaththa eka _userManager ekata pass karanna one
+    
+    *meka hadala postman eken request karama validation error ekak enawa ekata hethuwa thama 
+        IdentityUser eke defult eke eka thinawa.apita eka apita one widihata hadaganna puluwan
+        ekata karanna one startup eka wenas karana eka.
+------------------------------------------------------------------------------------------------------
+validation apita one widihata hadaganna karanna one 
+    

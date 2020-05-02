@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using WebApi.models;
 using Microsoft.AspNetCore.Identity;
 
+using WebApi.model;
+
 namespace WebApi
 {
     public class Startup
@@ -34,8 +36,20 @@ namespace WebApi
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // adding identity role 
-            services.addDefaultIdentity
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddEntityFrameworkStores<AuthenticationContext>();
+                // add entityframeworkstore eka danne ef eken role eka hada ganna.
             
+            //apita one widihata validation tika hadaganna eka
+            services.Configure<IdentityOptions>(Options =>{
+                Options.Password.RequireDigit=false;
+                Options.Password.RequireNonAlphanumeric=false;
+                Options.Password.RequireLowercase=false;
+                Options.Password.RequireUppercase=false;
+                Options.Password.RequiredLength=4; //we can adjust length 
+                
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +65,7 @@ namespace WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
