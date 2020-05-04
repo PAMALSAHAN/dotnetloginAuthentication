@@ -1,0 +1,27 @@
+<div  >
+        <mat-card fxLayoutAlign="center center">
+            <form [formGroup]="service.formModel"  class="example-form" autocomplete="off" fxFlex="25">
+                <mat-form-field class="example-full-width">
+                    <mat-label>UserName</mat-label>
+                    <input matInput placeholder="Enter UserName" formControlName="UserName">
+                </mat-form-field>
+    
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter Email" type="email" formControlName="Email" >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>FullName</mat-label>
+                    <input matInput placeholder="Enter FullName" formControlName="FullName" >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Enter Password" type="password" >
+                </mat-form-field>
+                
+            </form>
+        </mat-card>
+    
+        
+    
+</div>

@@ -60,4 +60,45 @@ meke hadanawa async function ekak sign wena ewa ganna.ita issella ewa allaganna 
         ekata karanna one startup eka wenas karana eka.
 ------------------------------------------------------------------------------------------------------
 validation apita one widihata hadaganna karanna one 
+------------------------------------------------------------------------------------------------------
+ANGULAR
+    material eka add karanna 
+        ng add @angular/material
+    component add karanna
+        ng g c user/registration 
+        mekedi registration folder ekak hadanawa
     
+    shareh forleder kak hadala service ekak hadana eka  
+        ng g s shared/user
+-----------------------------------------------------------------------------------------------------
+forms hadana krama dekak tinawa ekak thama 
+    reactive form 
+    template form 
+        hugak welawata use karanne reactive form
+------------------------------------------------------------------------------------------------------
+REACTIVE FORM 
+    import karanawa 
+        import { ReactiveFormsModule } from '@angular/forms';
+    
+    api service class eke form group ekak hadala karanne ita passe api eka inject karanawa 
+    app.module.ts eken 
+
+    service eke ctor eke 
+        private fb:FormBuilder dala
+    form ekata namak dala eka hadanna one.
+    constructor(private fb:FormBuilder) { }
+
+    formModel=this.fb.group({
+        UserName:[''],
+        Email:[''],
+        FullName:[''],
+        
+        Password :this.fb.group({
+        Password:[''],
+        ConfirmPassword:['']
+        })
+    });
+
+    meka use karanna one ne component eke eka hinda app.module wala tina providers array ekata 
+    danawa.
+        ita passe regcomponent.ts eken ctor eken service eka gannawa 
