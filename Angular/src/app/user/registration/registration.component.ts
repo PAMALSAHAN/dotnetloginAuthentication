@@ -10,7 +10,10 @@ export class RegistrationComponent implements OnInit {
 
   constructor(public service:UserService) { }
 
+  
+
   ngOnInit(): void {
+
   }
 
 }
