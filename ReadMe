@@ -102,3 +102,8 @@ REACTIVE FORM
     meka use karanna one ne component eke eka hinda app.module wala tina providers array ekata 
     danawa.
         ita passe regcomponent.ts eken ctor eken service eka gannawa 
+-------------------------------------------------------------------------------------------------------
+PASSWORD MISMATCH 
+    meka karanne service eke hadanama checkpassword kiyala method ekak pass karanawa formGroup eke object 
+    ekak.ita passe if condition ekak dala password ekai ConfirmPassword password ekai check karanawa.
+    
