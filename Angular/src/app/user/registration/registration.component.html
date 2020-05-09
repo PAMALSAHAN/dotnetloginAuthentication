@@ -1,11 +1,11 @@
 <div  >
         <mat-card fxLayoutAlign="center center">
-            <form [formGroup]="service.formModel"  class="example-form" autocomplete="off" fxFlex="25">
+            <form [formGroup]="service.formModel"  class="example-form" autocomplete="off" fxFlex="25" (sumbmit)="OnSubmit()" >
 
                 <mat-form-field class="example-full-width">
                     <mat-label class="md-primary">UserName</mat-label>
                     <input matInput placeholder="Enter UserName" formControlName="UserName"  required>
-                    <!-- <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required"> This field in mandatory</label> -->
+                    
                 </mat-form-field>
                 <div>
                     <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required"> This field in mandatory</label>
@@ -14,7 +14,7 @@
                 <mat-form-field class="example-full-width ">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Enter Email" type="email" formControlName="Email" required >
-                    <!-- <label class="text-danger" **ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email"> Invalid Email address</label> -->
+                    
                 </mat-form-field>
                 <div>
                     <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email"> Invalid Email address</label>
@@ -30,24 +30,24 @@
                         <mat-label>Password</mat-label>
                         <input matInput placeholder="Enter Password" type="password" formControlName="Password" required>
                     </mat-form-field>
-                    <!-- <div>
+                    <div>
                         <label class="text-danger" *ngIf="service.formModel.get('Password.Password').touched && service.formModel.get('Password.Password').errors?.required"> This field in mandatory</label>
                         <label class="text-danger" *ngIf="service.formModel.get('Password.Password').touched && service.formModel.get('Password.Password').errors?.minlength"> Minimum of 4 characters</label>
-                    </div> -->
+                    </div>
 
                     <mat-form-field class="example-full-width">
                         <mat-label>Confirm Password</mat-label>
                         <input matInput placeholder="Enter Password" type="password" formControlName="ConfirmPassword" required>
                         
                     </mat-form-field>
-                    <!-- <div>
-                        <label class="text-danger" *ngIf="service.formModel.get('ConfirmPassword.Password').touched && service.formModel.get('ConfirmPassword.Password').errors?.required"> This field in mandatory</label>
-                        <label class="text-danger" *ngIf="service.formModel.get('Password.Password').touched && service.formModel.get('Password.Password').errors?.checkPassword"> Password mismatch</label>
-                    </div> -->
+                    <div>
+                        <label class="text-danger" *ngIf="service.formModel.get('Password.Password').touched && service.formModel.get('Password.Password').errors?.required"> This field in mandatory</label>
+                        <label class="text-danger" *ngIf="service.formModel.get('Password.Password').touched && service.formModel.get('Password.Password').errors?.passwordMismatch"> Password mismatch</label>
+                    </div>
                 </div>
                 
                 <div class="example-button-row">
-                    <button mat-raised-button color="primary" type="submit">Sign Up</button>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!service.formModel.valid">Sign Up</button>
                     
                 </div>
                 

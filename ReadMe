@@ -107,3 +107,60 @@ PASSWORD MISMATCH
     meka karanne service eke hadanama checkpassword kiyala method ekak pass karanawa formGroup eke object 
     ekak.ita passe if condition ekak dala password ekai ConfirmPassword password ekai check karanawa.
     
+      Password:['',[Validators.required,Validators.minLength(4)]],
+      ConfirmPassword:['',Validators.required]
+    },{validators:this.checkPassword})
+
+    
+  
+  });
+
+  checkPassword(fbi:FormGroup){ //fbi kiyanne meke parameter ekak eka 
+    let ConfirmPassword=fbi.get('ConfirmPassword');
+    if (ConfirmPassword.errors==null || 'passwordMismatch' in ConfirmPassword.errors) {
+      //erros deka naththam meke athulata enawa
+      if (fbi.get('Password').value!=ConfirmPassword.value) {
+        ConfirmPassword.setErrors({passwordMismatch:true});
+      }
+      else{
+        ConfirmPassword.setErrors(null);
+      }
+      
+    }
+
+  }
+  
+}
+
+meke balanna {validators:this.checkPassword} kiyala function ekak hadanawa ita passe function eka 
+athule karanne passwordMismatch eka false krana eka password.value eka aragena
+    ita passe eka inject karanna one ekata kranne ctor ekata private parameter ekak widihata add karana 
+    eka.
+        ewaguma app.module ekata module ekak widihata add karannath one.
+
+-------------------------------------------------------------------------------------------------------
+REGISTER 
+    mekedi karanne function ekak hadana eka ekata module ekak import karanna one.
+    ekata import statement ekak add karaganna one.
+        import {HttpClient} from "@angular/common/http"; 
+        -- meka thamai statement eka.
+        value eka aragena
+        ita passe eka inject karanna one ekata kranne ctor ekata private parameter ekak widihata add karana 
+        eka.
+        ewaguma app.module ekata module ekak widihata add karannath one.
+
+        register(){
+    var body={
+      UserNamePt :this.formModel.value.UserName,
+      EmailPt :this.formModel.value.Email,
+      PasswordPt :this.formModel.value.Password,
+      ConfirmPasswordPt :this.formModel.value.ConfirmPassword,
+    }
+        Usernamept kiyana propety eke thamai tinne value eka eka thmai pass karanna one 
+        web api project ekata.
+         return this.http.post(this.BaseUri+'/ApplicationUser/Register',body);
+         meka liyanawa body ekata pahalin.
+    ----------------------------------------------------------------------------------------------------------
+    
+  
+    

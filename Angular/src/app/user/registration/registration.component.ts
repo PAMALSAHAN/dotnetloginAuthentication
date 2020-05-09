@@ -16,4 +16,15 @@ export class RegistrationComponent implements OnInit {
 
   }
 
+  OnSubmit(){
+    this.service.register().subscribe(
+      res=>{
+
+      },
+      err=>{
+        
+      }
+    );
+  }
+
 }
