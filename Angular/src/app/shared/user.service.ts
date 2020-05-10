@@ -41,10 +41,10 @@ export class UserService {
   // register kiyala function ekak liyanawa
   register(){
     var body={
-      UserNamePt :this.formModel.value.UserName,
-      EmailPt :this.formModel.value.Email,
-      PasswordPt :this.formModel.value.Password,
-      ConfirmPasswordPt :this.formModel.value.ConfirmPassword,
+      UserName :this.formModel.value.UserName,
+      Email :this.formModel.value.Email,
+      Password :this.formModel.value.Password.Password,
+    
     }
     return this.http.post(this.BaseUri+'/ApplicationUser/Register',body);
   }

@@ -13,16 +13,35 @@ export class RegistrationComponent implements OnInit {
   
 
   ngOnInit(): void {
-
+    this.service.formModel.reset(); //ng lifecycle hook 
   }
 
   OnSubmit(){
     this.service.register().subscribe(
-      res=>{
+      (res:any)=>{
+        if(res.succeeded){
+          this.service.formModel.reset(); // success nam reset karanawa mokada duplicate data 
+          //enter nowenna
 
+        }
+        else{
+          ///ehama nowe nam api balanna one 
+          res.errors.forEach(element => {
+            switch (element.code) {
+              case 'DuplicateUserName':
+                  //display duplicate user name
+                break;
+            
+              default:
+                //registration failed
+                break;
+            }
+          });
+        }
       },
       err=>{
-        
+        //get error to the console 
+        console.log(err);
       }
     );
   }

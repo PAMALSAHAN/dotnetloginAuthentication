@@ -161,6 +161,10 @@ REGISTER
          return this.http.post(this.BaseUri+'/ApplicationUser/Register',body);
          meka liyanawa body ekata pahalin.
     ----------------------------------------------------------------------------------------------------------
-    
+    PORT NUMBER 
+        mekedi wenne anguar ekai api ekak wena wenama port dekaka duwanne.ekata nuget package ekak install
+        karanna one.
+        dotnet add package Microsoft.AspNetCore.Cors --version 2.2.0
+        add karanna tinne.
   
     

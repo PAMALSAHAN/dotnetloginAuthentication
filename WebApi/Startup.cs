@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApi.models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Cors;
 
 using WebApi.model;
 
@@ -50,6 +51,7 @@ namespace WebApi
                 
 
             });
+         services.AddCors();  //add karanawa port seen ekata.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +61,13 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //add karanawa port seen eka
+            app.UseCors(builder=>
+                builder.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+            ); 
 
             app.UseHttpsRedirection();
 
