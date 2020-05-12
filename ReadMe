@@ -70,6 +70,8 @@ ANGULAR
     
     shareh forleder kak hadala service ekak hadana eka  
         ng g s shared/user
+        service eka hadala eka provider ekata add karanna one.
+        
 -----------------------------------------------------------------------------------------------------
 forms hadana krama dekak tinawa ekak thama 
     reactive form 

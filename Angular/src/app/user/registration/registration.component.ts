@@ -17,6 +17,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   OnSubmit(){
+    // const val=this.service.formModel.value
+    // console.log(val.UserName);
+    console.log('pamal');
     this.service.register().subscribe(
       (res:any)=>{
         if(res.succeeded){
@@ -44,6 +47,10 @@ export class RegistrationComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  click(){
+    console.log('pamal');
   }
 
 }

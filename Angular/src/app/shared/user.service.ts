@@ -6,13 +6,14 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class UserService {
-
+  
   constructor(private fb:FormBuilder, private http:HttpClient) { }
   readonly BaseUri="http://localhost:5000/api"; //meka thami base uri eka use karanna tina
 
   formModel=this.fb.group({
     UserName:['',Validators.required],
-    Email:['',[Validators.required, Validators.email]],
+    Email:[''],
+    //[Validators.required, Validators.email]
     FullName:[''],
     Password :this.fb.group({
       Password:['',[Validators.required,Validators.minLength(4)]],
@@ -46,6 +47,7 @@ export class UserService {
       Password :this.formModel.value.Password.Password,
     
     }
+    console.log('pamal');
     return this.http.post(this.BaseUri+'/ApplicationUser/Register',body);
   }
   
