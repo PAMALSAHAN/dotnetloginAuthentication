@@ -1,6 +1,6 @@
 <div  >
         <mat-card fxLayoutAlign="center center">
-            <form [formGroup]="service.formModel"  class="example-form" autocomplete="off" fxFlex="25" (sumbmit)="OnSubmit()" >
+            <form [formGroup]="service.formModel"  class="example-form" autocomplete="off" fxFlex="25" (submit)="OnSubmit()" >
 
                 <mat-form-field class="example-full-width">
                     <mat-label class="md-primary">UserName</mat-label>
@@ -47,7 +47,7 @@
                 </div>
                 
                 <div class="example-button-row">
-                    <button mat-raised-button color="primary" type="submit" [disabled]="!service.formModel.valid" (click)='click()'>Sign Up</button>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!service.formModel.valid" >Sign Up</button>
                     
                 </div>
                 

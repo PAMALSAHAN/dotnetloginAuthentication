@@ -9,6 +9,7 @@ export class UserService {
   
   constructor(private fb:FormBuilder, private http:HttpClient) { }
   readonly BaseUri="http://localhost:5000/api"; //meka thami base uri eka use karanna tina
+  //http://localhost:5000/api/ApplicationUser/Register
 
   formModel=this.fb.group({
     UserName:['',Validators.required],
@@ -45,10 +46,14 @@ export class UserService {
       UserName :this.formModel.value.UserName,
       Email :this.formModel.value.Email,
       Password :this.formModel.value.Password.Password,
+      FullName:this.formModel.value.FullName
     
     }
-    console.log('pamal');
+    // console.log('pamal');
+    console.log(this.BaseUri+'/ApplicationUser/Register');
+    console.log(body);
     return this.http.post(this.BaseUri+'/ApplicationUser/Register',body);
+    
   }
   
 }

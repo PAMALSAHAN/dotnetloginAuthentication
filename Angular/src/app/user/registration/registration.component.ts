@@ -19,16 +19,18 @@ export class RegistrationComponent implements OnInit {
   OnSubmit(){
     // const val=this.service.formModel.value
     // console.log(val.UserName);
-    console.log('pamal');
+    
     this.service.register().subscribe(
       (res:any)=>{
         if(res.succeeded){
+          console.log("if condition succeeded");
           this.service.formModel.reset(); // success nam reset karanawa mokada duplicate data 
           //enter nowenna
 
         }
         else{
           ///ehama nowe nam api balanna one 
+          console.log("else errors occur");
           res.errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
@@ -47,10 +49,9 @@ export class RegistrationComponent implements OnInit {
         console.log(err);
       }
     );
+    
   }
 
-  click(){
-    console.log('pamal');
-  }
+  
 
 }

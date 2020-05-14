@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
@@ -9,6 +10,7 @@ using WebApi.model;
 namespace WebApi.Controllers {
     [Route ("api/[controller]")]
     [ApiController]
+    
     public class ApplicationUserController : ControllerBase {
         
         private  SignInManager<ApplicationUser> _signInManager;
@@ -19,10 +21,11 @@ namespace WebApi.Controllers {
 
         }
 
-
+        
 
         [HttpPost]
         [Route("Register")]
+        //[EnableCors("AllowOrigin")] 
         //http://localhost:5000/api/ApplicationUser/Register
         
         public async Task<Object> PostApplicationUser (ApplicationUserModel applicationUserModel)
@@ -47,6 +50,17 @@ namespace WebApi.Controllers {
                 
                 throw ex;
             }
+        }
+
+        static List<string> myList = new List<string>()
+        {
+            "value0","value1","value2"
+        };
+        // GET api/values
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()   // read
+        {
+            return myList;
         }
 
 

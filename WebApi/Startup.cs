@@ -39,19 +39,24 @@ namespace WebApi
             // adding identity role 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
-                // add entityframeworkstore eka danne ef eken role eka hada ganna.
-            
+            // add entityframeworkstore eka danne ef eken role eka hada ganna.
+
             //apita one widihata validation tika hadaganna eka
-            services.Configure<IdentityOptions>(Options =>{
-                Options.Password.RequireDigit=false;
-                Options.Password.RequireNonAlphanumeric=false;
-                Options.Password.RequireLowercase=false;
-                Options.Password.RequireUppercase=false;
-                Options.Password.RequiredLength=4; //we can adjust length 
-                
+            services.Configure<IdentityOptions>(Options =>
+            {
+                Options.Password.RequireDigit = false;
+                Options.Password.RequireNonAlphanumeric = false;
+                Options.Password.RequireLowercase = false;
+                Options.Password.RequireUppercase = false;
+                Options.Password.RequiredLength = 4; //we can adjust length 
+
 
             });
-         services.AddCors();  //add karanawa port seen ekata.
+             services.AddCors();  //add karanawa port seen ekata.
+            // services.AddCors(c =>
+            // {
+            //     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,11 +68,20 @@ namespace WebApi
             }
 
             //add karanawa port seen eka
-            app.UseCors(builder=>
-                builder.WithOrigins("http://localhost:4200")
+            // app.UseCors(builder=>
+            //     builder.WithOrigins("http://localhost:4200")
+            //     .AllowAnyHeader()
+            //     .AllowAnyMethod()
+
+            // ); 
+
+            // app.UseCors(options => options.AllowAnyOrigin());
+
+            app.UseCors(builder =>
+                builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
                 .AllowAnyHeader()
                 .AllowAnyMethod()
-            ); 
+                );
 
             app.UseHttpsRedirection();
 

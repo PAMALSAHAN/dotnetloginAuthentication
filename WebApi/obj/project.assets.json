@@ -9120,11 +9120,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\pamal\\pamal\\udemy\\.A3rd year project\\dotnetloginAuthentication\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "F:\\udemy\\.A3rd year project\\dotnetloginAuthentication\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "F:\\pamal\\pamal\\udemy\\.A3rd year project\\dotnetloginAuthentication\\WebApi\\WebApi.csproj",
+      "projectPath": "F:\\udemy\\.A3rd year project\\dotnetloginAuthentication\\WebApi\\WebApi.csproj",
       "packagesPath": "C:\\Users\\Chamath\\.nuget\\packages\\",
-      "outputPath": "F:\\pamal\\pamal\\udemy\\.A3rd year project\\dotnetloginAuthentication\\WebApi\\obj\\",
+      "outputPath": "F:\\udemy\\.A3rd year project\\dotnetloginAuthentication\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
