@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -8,12 +9,12 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(public service:UserService) { }
+  constructor(public service:UserService,private tostr:ToastrService) { }
 
   
 
   ngOnInit(): void {
-    this.service.formModel.reset(); //ng lifecycle hook 
+    //this.service.formModel.reset(); //ng lifecycle hook 
   }
 
   OnSubmit(){
@@ -21,9 +22,10 @@ export class RegistrationComponent implements OnInit {
     // console.log(val.UserName);
     
     this.service.register().subscribe(
-      (res:any)=>{
+      (res:any)=>{ 
         if(res.succeeded){
           console.log("if condition succeeded");
+          this.tostr.success("New user added!","Registration Successful");
           this.service.formModel.reset(); // success nam reset karanawa mokada duplicate data 
           //enter nowenna
 
@@ -31,14 +33,17 @@ export class RegistrationComponent implements OnInit {
         else{
           ///ehama nowe nam api balanna one 
           console.log("else errors occur");
+          
           res.errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
+                this.tostr.error("user name already taken","Registration Failed");
                   //display duplicate user name
                 break;
             
               default:
                 //registration failed
+                this.tostr.error(element.description,"Registration Failed");
                 break;
             }
           });

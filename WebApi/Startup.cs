@@ -61,11 +61,7 @@ namespace WebApi
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
                 });
             });
-             //services.AddCors();  //add karanawa port seen ekata.
-            // services.AddCors(c =>
-            // {
-            //     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-            // });
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,24 +71,6 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            
-
-            //add karanawa port seen eka
-            // app.UseCors(builder=>
-            //     builder.WithOrigins("http://localhost:4200")
-            //     .AllowAnyHeader()
-            //     .AllowAnyMethod()
-
-            // ); 
-
-            // app.UseCors(options => options.AllowAnyOrigin());
-
-            // app.UseCors(builder =>
-            //     builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
-            //     .AllowAnyHeader()
-            //     .AllowAnyMethod()
-            //     );
 
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");

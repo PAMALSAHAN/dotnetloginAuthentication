@@ -14,8 +14,8 @@ export class UserService {
   
   formModel=this.fb.group({
     UserName:['',Validators.required],
-    Email:[''],
-    //[Validators.required, Validators.email]
+    Email:['',[Validators.required, Validators.email]],
+    
     FullName:[''],
     Password :this.fb.group({
       Password:['',[Validators.required,Validators.minLength(4)]],
@@ -50,9 +50,7 @@ export class UserService {
       FullName:this.formModel.value.FullName
     
     }
-    // console.log('pamal');
-    // console.log(this.BaseUri+'/ApplicationUser/Register');
-    // console.log(body);
+    
     return this.http.post(this.BaseUri+'/ApplicationUser/Register',body);
     
   }

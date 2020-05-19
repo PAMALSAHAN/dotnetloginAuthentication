@@ -16,6 +16,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from "@angular/common/http"; 
 
+//tostr module
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -34,10 +37,13 @@ import {HttpClientModule} from "@angular/common/http";
     MatInputModule,
     FlexLayoutModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      progressBar:true
+    }) 
     
     
-  ],
+  ], 
   providers: [UserService],
   bootstrap: [AppComponent]
 })
