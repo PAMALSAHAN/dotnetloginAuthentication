@@ -5,12 +5,13 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService { 
   
   constructor(private fb:FormBuilder, private http:HttpClient) { }
-  readonly BaseUri="http://localhost:5000/api"; //meka thami base uri eka use karanna tina
+  readonly BaseUri="https://localhost:5001/api"; //meka thami base uri eka use karanna tina
   //http://localhost:5000/api/ApplicationUser/Register
 
+  
   formModel=this.fb.group({
     UserName:['',Validators.required],
     Email:[''],
@@ -50,8 +51,8 @@ export class UserService {
     
     }
     // console.log('pamal');
-    console.log(this.BaseUri+'/ApplicationUser/Register');
-    console.log(body);
+    // console.log(this.BaseUri+'/ApplicationUser/Register');
+    // console.log(body);
     return this.http.post(this.BaseUri+'/ApplicationUser/Register',body);
     
   }

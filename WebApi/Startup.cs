@@ -35,6 +35,8 @@ namespace WebApi
             // using Microsoft.EntityFrameworkCore;
             services.AddDbContext<AuthenticationContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+            
 
             // adding identity role 
             services.AddDefaultIdentity<ApplicationUser>()
@@ -52,7 +54,14 @@ namespace WebApi
 
 
             });
-             services.AddCors();  //add karanawa port seen ekata.
+            services.AddCors(opt=>
+            {
+                opt.AddPolicy("CorsPolicy",policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+                });
+            });
+             //services.AddCors();  //add karanawa port seen ekata.
             // services.AddCors(c =>
             // {
             //     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
@@ -67,6 +76,8 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            
+
             //add karanawa port seen eka
             // app.UseCors(builder=>
             //     builder.WithOrigins("http://localhost:4200")
@@ -77,13 +88,14 @@ namespace WebApi
 
             // app.UseCors(options => options.AllowAnyOrigin());
 
-            app.UseCors(builder =>
-                builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                );
+            // app.UseCors(builder =>
+            //     builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
+            //     .AllowAnyHeader()
+            //     .AllowAnyMethod()
+            //     );
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
